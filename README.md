@@ -150,3 +150,22 @@ ACCEL[X:2 Y:-5 Z:3 mg]  DRIVE:NORMAL  GYRO[X:0 Y:0 Z:0 dps]  TURN:STRAIGHT  DIST
 ACCEL[X:15 Y:480 Z:-4 mg]  DRIVE:ACCELERATING  GYRO[X:0 Y:1 Z:2 dps]  TURN:STRAIGHT  DIST:38 cm  OBJECT:CAUTION
 
 ACCEL[X:-3 Y:-520 Z:8 mg]  DRIVE:BRAKING  GYRO[X:0 Y:0 Z:-45 dps]  TURN:LEFT  DIST:15 cm  OBJECT:OBSTACLE
+
+```
+## Hardware Setup
+
+The prototype uses an STM32 NUCLEO-L476RG connected to an MPU6050 IMU and HC-SR04 ultrasonic sensor.
+
+![Vehicle Telemetry Hardware Setup](images/hardware-setup.jpg)
+
+## Live Telemetry
+
+Sensor readings and detected driving states are streamed over UART to a serial terminal at 115200 baud.
+
+![Real-Time UART Telemetry](images/telemetry-output.png)
+
+## Obstacle Detection
+
+The HC-SR04 measures the distance to objects in front of the sensor. When the filtered distance is 20 cm or less, the system classifies it as an obstacle and activates the onboard LED.
+
+![Obstacle Detection Demo](images/obstacle-demo.jpg)
